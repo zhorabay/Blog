@@ -6,6 +6,10 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :text, presence: true
 
+  after_save :update_posts_counter
+
+  private
+
   def update_posts_counter
     author.update(posts_counter: author.posts.count)
   end
