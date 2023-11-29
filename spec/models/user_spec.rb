@@ -19,8 +19,8 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "#return_recent_posts" do
-    it "returns the most recent posts" do
+  describe '#return_recent_posts' do
+    it 'returns the most recent posts' do
       older_post = create(:post, author: user, created_at: 2.days.ago)
       recent_post1 = create(:post, author: user, created_at: 1.day.ago)
       recent_post2 = create(:post, author: user, created_at: 1.hour.ago)
@@ -28,9 +28,9 @@ RSpec.describe User, type: :model do
       recent_posts = user.return_recent_posts
 
       expect(recent_posts.sort_by(&:created_at)).to eq([older_post, recent_post1, recent_post2])
-    end      
+    end
 
-    it "returns up to 3 recent posts" do
+    it 'returns up to 3 recent posts' do
       create_list(:post, 5, author: user)
 
       recent_posts = user.return_recent_posts

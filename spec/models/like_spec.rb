@@ -6,7 +6,8 @@ RSpec.describe Like, type: :model do
 
   describe '#update_likes_counter' do
     it 'updates the likes_counter after saving a like' do
-      like = create(:like, user: user, post: post)
+      create(:like, user: user, post: post)
+
       expect(post.reload.likes_counter).to eq(1)
     end
   end

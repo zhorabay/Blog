@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   let(:user) { create(:user) }
-  let(:post) { create(:post, author: user) }
 
   describe 'validations' do
     subject { Post.new(title: 'Thanksgiving', comments_counter: 0, likes_counter: 0) }
@@ -32,7 +31,7 @@ RSpec.describe Post, type: :model do
 
   describe '#update_posts_counter' do
     it 'updates the posts_counter after saving a post' do
-      post = create(:post, author: user)
+      create(:post, author: user)
       expect(user.reload.posts_counter).to eq(1)
     end
   end
