@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.open-post-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 70%;
+  margin: 40px auto;
+}
+
+.open-post,
+.open-comment {
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 20px;
+}
+
+.amount {
+  text-align: right;
+  padding: 10px;
+  padding-right: 20px;
+}
