@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.idpage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 40px auto;
+  width: 70%;
+}
+
+.user {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.userinfo {
+  border: 2px solid black;
+  width: 100%;
+  height: 80%;
+  margin: auto 5px;
+}
+
+.username {
+  padding: 60px;
+  padding-bottom: 30px;
+  font-size: 40px;
+}
+
+.postnumber {
+  text-align: right;
+  padding-right: 30px;
+  margin-bottom: 20px;
+}
+
+.bio {
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 0;
+  width: 100%;
+}
+
+.biohead {
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+.biotext {
+  padding: 20px;
+  padding-top: 0;
+}
+
+.postlist {
+  margin: 0;
+  width: 100%;
+}
+
+.post,
+.comment-list {
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 20px;
+}
+
+.comments {
+  text-align: right;
+  padding-right: 30px;
+  padding-top: 12px;
+}
+
+.button {
+  text-align: center;
+  padding: 8px 12px;
+  background-color: white;
+  margin-bottom: 40px;
+  margin-left: 45%;
+  cursor: pointer;
+}
