@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "usershow" %>
+
+<div class='idpage'>
+  <div class='user'>
+    <div class='photo'>
+      <%= image_tag(@user.photo, alt: @user.name, class: "user-photo") if @user.photo.present?%>
+    </div>
+    <div class='userinfo'>
+      <h2 class='username'><%= @user.name %></h2>
+      <h4 class='postnumber'>Number of posts: <%= @user.posts.count %></h4>
+    </div>
+  </div>
+  <div class='bio'>
+    <h3 class='biohead'>Bio</h3></br>
+    <p class='biotext'><%= @user.bio %></p>
+  </div>
+  <ul class='postlist'>
+    <% @user.posts.limit(3).each do |post| %>
+      <li class='post'>
+        <h3 class='order'><%= link_to "#{post.title}", user_post_path(post.author, post) %></h3></br>
+        <p class='posttext'><%= post.text %></p>
+        <p class='comments'>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<% if @user.posts.count > 3 %>
+  <button type='button' class='button'><%= link_to "See all posts", user_posts_path(@user), class: "back" %></button>
+<% end %>
