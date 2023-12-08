@@ -6,7 +6,15 @@
     <p class='amount'>Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
     <p class='text'><%= @post.text %></p>
   </div>
-  <% @post.comments.includes(:user).each do |comment| %>
-    <div class='open-comment'><strong><%= comment.user.name %> :</strong> <%= comment.text %></div>
-  <% end %>
+  <div class="post-likes">
+    <%= form_with(model: [@post], url: user_post_likes_path(@post.author, @post), method: :post) do |form| %>
+      <%= form.submit 'Like' %>
+    <% end %>
+  </div>
+  <div class='post-comments'>
+    <strong><%= link_to "Add comment", new_user_post_comment_path(@post.author, @post) %></strong>
+    <% @post.comments.includes(:user).each do |comment| %>
+      <div class='open-comment'><strong><%= comment.user.name %> :</strong> <%= comment.text %></div>
+    <% end %>
+  </div>
 </div>
