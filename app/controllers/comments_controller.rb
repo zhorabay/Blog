@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :current_user
-  before_action :set_post, only: [:new, :create]
+  before_action :set_post, only: %i[:new, :create]
 
   def new
     @user = current_user
