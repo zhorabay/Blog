@@ -1,8 +1,8 @@
-before_action :current_user
+<%= link_to 'Back', user_post_path(@post.author, @post) %>
 
 <h1>Add a comment</h1>
 
-<%= form_with(model: [@post, @comment], url: user_post_comments_path(current_user, @post), class: "form") do |form| %>
+<%= form_with(model: [@post, @comment], url: user_post_comments_path(current_user, @post), class: "comment-click") do |form| %>
   <%= form.label :text %>
   <%= form.text_area :text %>
   <%= form.submit 'Create Comment' %>
