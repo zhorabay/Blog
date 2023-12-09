@@ -1,27 +1,31 @@
 <%= stylesheet_link_tag "postindex" %>
+<%= link_to 'Back', users_path, class: 'back-link' %>
 
 <div class='page'>
   <div class='user'>
     <div class='photo'>
-      <%= image_tag(@user.photo, alt: @user.name, class: "user-photo") if @user.photo.present? %>
+      <%= image_tag(@user.photo, alt: @user.name, class: 'user-photo') if @user.photo.present? %>
     </div>
     <div class='userinfo'>
       <h2 class='username'><%= @user.name %></h2>
       <h4 class='postnumber'>Number of posts: <%= @user.posts.count %></h4>
     </div>
   </div>
-  <ul class='postlist'>
-    <% @posts.each do |post| %>
+  <%= link_to 'New post', new_user_post_path(@user), class: 'new-post' %>
+  <% @posts.each do |post| %>
+    <ul class='postlist'>
       <li class='post'>
         <h3 class='order'><%= link_to "#{post.title}", user_post_path(post.author, post) %></h3></br>
         <p class='posttext'><%= post.text %></p>
         <p class='comments'>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
       </li>
+    </ul>
+    <ul class='comment-list'>
       <% post.return_recent_comments.includes(:user).each do |comment| %>
-        <li class='comment-list'><strong><%= comment.user.name %> :</strong> <%= comment.text %></li></br>
+        <li><strong><%= comment.user.name %> :</strong> <%= comment.text %></li>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  <% end %>
 </div>
 
 <button type='button' class='button'><%= will_paginate @posts %>Pagination</button>

@@ -23,3 +23,29 @@
   padding: 10px;
   padding-right: 20px;
 }
+
+.post-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.like-btn,
+.cmnt-btn {
+  color: white;
+  background-color: black;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 6px 9px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.text {
+  font-size: 18px;
+}
+
+.open-post h3 {
+  font-size: 21px;
+}

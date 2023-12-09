@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag "usershow" %>
+<%= link_to 'Back', users_path, class: 'back-link'  %>
 
 <div class='idpage'>
   <div class='user'>
@@ -14,9 +15,9 @@
     <h3 class='biohead'>Bio</h3></br>
     <p class='biotext'><%= @user.bio %></p>
   </div>
-  <ul class='postlist'>
+  <ul class='post-ulist'>
     <% @user.posts.limit(3).each do |post| %>
-      <li class='post'>
+      <li class='posts-list'>
         <h3 class='order'><%= link_to "#{post.title}", user_post_path(post.author, post) %></h3></br>
         <p class='posttext'><%= post.text %></p>
         <p class='comments'>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
