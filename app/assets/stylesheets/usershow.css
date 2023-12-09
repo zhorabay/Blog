@@ -53,16 +53,11 @@
   padding-top: 0;
 }
 
-.postlist {
-  margin: 0;
-  width: 100%;
-}
-
-.post,
-.comment-list {
+.posts-list {
   border: 1px solid black;
-  text-decoration: none;
   padding: 20px;
+  list-style: none;
+  margin-bottom: 10px;
 }
 
 .comments {

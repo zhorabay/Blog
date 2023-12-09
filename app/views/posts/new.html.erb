@@ -1,11 +1,14 @@
-<%= link_to 'Back', user_posts_path(@user) %>
+<%= stylesheet_link_tag "commentnew" %>
+<%= link_to 'Back', user_posts_path(@user), class: 'back-link' %>
 
-<h1>Create a new post</h1>
+<div class='add-position'
+    <h1>Create a new post</h1>
 
-<%= form_with(model: [@post], url: user_posts_path) do |form| %>
-  <%= form.label :title %>
-  <%= form.text_field :title %>
-  <%= form.label :text %>
-  <%= form.text_area :text %>
-  <%= form.submit "Create Post" %>
-<% end %>
+    <%= form_with(model: [@post], url: user_posts_path) do |form| %>
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'area' %>
+    <%= form.label :text %>
+    <%= form.text_area :text, class: 'area' %>
+    <%= form.submit "Create Post", class: 'create-btn' %>
+    <% end %>
+</div>

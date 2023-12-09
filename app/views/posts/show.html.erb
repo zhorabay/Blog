@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag "postshow" %>
-<%= link_to 'Back', user_posts_path %>
+<%= link_to 'Back', user_posts_path, class: 'back-link' %>
 
 <div class='open-post-flex'>
   <div class='open-post'>
@@ -7,13 +7,13 @@
     <p class='amount'>Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
     <p class='text'><%= @post.text %></p>
   </div>
-  <div class="post-likes">
+  <div class="post-actions">
     <%= form_with(model: [@post], url: user_post_likes_path(@post.author, @post), method: :post) do |form| %>
-      <%= form.submit 'Like' %>
+      <%= form.submit 'Like', class: 'like-btn' %>
     <% end %>
+    <%= link_to "Add comment", new_user_post_comment_path(@post.author, @post), class: 'cmnt-btn' %>
   </div>
   <div class='post-comments'>
-    <strong><%= link_to "Add comment", new_user_post_comment_path(@post.author, @post) %></strong>
     <% @post.comments.includes(:user).each do |comment| %>
       <div class='open-comment'><strong><%= comment.user.name %> :</strong> <%= comment.text %></div>
     <% end %>

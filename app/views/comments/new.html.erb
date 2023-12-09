@@ -1,9 +1,11 @@
-<%= link_to 'Back', user_post_path(@post.author, @post) %>
+<%= stylesheet_link_tag "commentnew" %>
+<%= link_to 'Back', user_post_path(@post.author, @post), class: 'back-link' %>
 
-<h1>Add a comment</h1>
+<div class='add-position'
+ <h1>Add a comment</h1>
 
-<%= form_with(model: [@post, @comment], url: user_post_comments_path(current_user, @post), class: "comment-click") do |form| %>
-  <%= form.label :text %>
-  <%= form.text_area :text %>
-  <%= form.submit 'Create Comment' %>
-<% end %>
+  <%= form_with(model: [@post, @comment], url: user_post_comments_path(current_user, @post), class: "comment-click") do |form| %>
+  <%= form.text_area :text, class: 'area' %>
+  <%= form.submit 'Create Comment', class: 'create-btn' %>
+  <% end %>
+</div>

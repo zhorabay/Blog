@@ -34,23 +34,44 @@
   margin-bottom: 20px;
 }
 
-.postlist {
+.postlist,
+.comment-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 40px auto;
+  margin: 12px auto;
   width: 70%;
   list-style: none;
-}
-
-.post,
-.comment-list {
   border: 1px solid black;
   text-decoration: none;
   padding: 20px;
 }
 
+.comment-list {
+  margin-top: 0;
+}
+
 .comments {
   text-align: right;
   padding-right: 30px;
+}
+
+.back-link,
+.new-post {
+  text-decoration: none;
+  padding: 10px 14px;
+  border: 1px solid;
+  border-radius: 18px;
+  margin: 20px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.order a {
+  text-decoration: none;
+}
+
+.new-post {
+  margin: 5px auto;
 }
