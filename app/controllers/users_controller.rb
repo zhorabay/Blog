@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(posts: :author).find(params[:id])
+    @user = User.includes(posts: :author).find_by(id: params[:id])
+    redirect_to users_path, alert: 'User not found' unless @user
   end
 end

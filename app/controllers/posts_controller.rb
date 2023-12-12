@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.includes(:comments).paginate(page: params[:page], per_page: 6)
+    @posts = @user.posts.includes(:comments).paginate(page: params[:page], per_page: 3)
   end
 
   def show
@@ -34,6 +34,7 @@ class PostsController < ApplicationController
   end
 
   def find_post
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+    redirect_to users_path, alert: 'Post not found' unless @post
   end
 end

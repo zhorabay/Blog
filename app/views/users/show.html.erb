@@ -18,7 +18,7 @@
   <ul class='post-ulist'>
     <% @user.posts.limit(3).each do |post| %>
       <li class='posts-list'>
-        <h3 class='order'><%= link_to "#{post.title}", user_post_path(post.author, post) %></h3></br>
+        <%= link_to "#{post.title}", user_post_path(post.author, post), class: "order" %></br>
         <p class='posttext'><%= post.text %></p>
         <p class='comments'>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
       </li>
@@ -27,5 +27,7 @@
 </div>
 
 <% if @user.posts.count > 3 %>
-  <button type='button' class='button'><%= link_to "See all posts", user_posts_path(@user), class: "back" %></button>
+  <%= link_to user_posts_path(@user) do %>
+    <button type='button' class='button'>See all posts</button>
+  <% end %>
 <% end %>
