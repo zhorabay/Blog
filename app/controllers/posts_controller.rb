@@ -35,9 +35,6 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.find_by(id: params[:id])
-
-    unless @post
-      redirect_to users_path, alert: 'Post not found'
-    end
+    redirect_to users_path, alert: 'Post not found' unless @post
   end
 end

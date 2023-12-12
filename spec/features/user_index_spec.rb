@@ -12,7 +12,6 @@ RSpec.feature 'User Index Page' do
 
   scenario 'Displays profile picture' do
     visit users_path
-    save_and_open_page
     expect(page).to have_css(".user-photo[src*='#{user1.photo}']")
   end
 
