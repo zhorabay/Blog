@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
 
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_current_user, only: [:new, :create]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_current_user, only: %i[new create]
   before_action :find_post, only: [:show]
 
   def index
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     @post.likes.destroy_all
     @post.destroy
     @user.posts_counter -= 1
-  
+
     if @user.save
       redirect_to user_posts_path(@user), notice: 'Post deleted successfully.'
     else
