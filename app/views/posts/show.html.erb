@@ -5,7 +5,7 @@
   <div class='open-post'>
     <h3><%= @post.title %> by <%= @post.author.name %></h3>
     <% if can? :destroy, @post %>
-      <%= link_to "Delete Post", user_post_path(@post.author, @post), data: { turbo_method: :delete, turbo_confirm: "This post will be permanently removed. Do you want to proceed?" } %>
+      <%= link_to "Delete Post", user_post_path(@post.author, @post), class: 'delete-post', data: { turbo_method: :delete, turbo_confirm: "This post will be permanently removed. Do you want to proceed?" } %>
     <% end %>
     <p class='amount'>Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
     <p class='text'><%= @post.text %></p>
@@ -21,7 +21,7 @@
       <div class='open-comment'>
         <strong><%= comment.user.name %> :</strong> <%= comment.text %>
         <% if can? :destroy, comment %>
-          <%= link_to "Delete comment", user_post_comment_path(@post.author, @post, comment), data: { turbo_method: :delete, turbo_confirm: "Do you really want to delete this comment?" } %>
+          <%= link_to "Delete comment", user_post_comment_path(@post.author, @post, comment), class: 'delete-cmnt', data: { turbo_method: :delete, turbo_confirm: "Do you really want to delete this comment?" } %>
         <% end %>
       </div>
     <% end %>
