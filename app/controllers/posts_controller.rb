@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  load_and_authorize_resource
+
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_current_user, only: [:new, :create]
   before_action :find_post, only: [:show]
-  before_action :current_user
 
   def index
     @user = User.find(params[:user_id])
@@ -28,7 +30,26 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @user = @post.author
+    @post.comments.destroy_all
+    @post.likes.destroy_all
+    @post.destroy
+    @user.posts_counter -= 1
+  
+    if @user.save
+      redirect_to user_posts_path(@user), notice: 'Post deleted successfully.'
+    else
+      redirect_to user_posts_path(@user), alert: 'Unable to delete the post.'
+    end
+  end
+
   private
+
+  def set_current_user
+    @user = current_user
+  end
 
   def post_params
     params.require(:post).permit(:title, :text)

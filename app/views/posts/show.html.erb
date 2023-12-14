@@ -3,6 +3,9 @@
 
 <div class='open-post-flex'>
   <div class='open-post'>
+    <% if can? :destroy, @post %>
+      <%= link_to "Delete Post", user_post_path(@post.author, @post), data: { turbo_method: :delete, turbo_confirm: "This post will be permanently removed. Do you want to proceed?" } %>
+    <% end %>
     <h3><%= @post.title %> by <%= @post.author.name %></h3>
     <p class='amount'>Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
     <p class='text'><%= @post.text %></p>
@@ -15,7 +18,12 @@
   </div>
   <div class='post-comments'>
     <% @post.comments.includes(:user).each do |comment| %>
-      <div class='open-comment'><strong><%= comment.user.name %> :</strong> <%= comment.text %></div>
+      <div class='open-comment'>
+        <strong><%= comment.user.name %> :</strong> <%= comment.text %>
+        <% if can? :destroy, comment %>
+          <%= link_to "Delete comment", user_post_comment_path(@post.author, @post, comment), data: { turbo_method: :delete, turbo_confirm: "Do you really want to delete this comment?" } %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
