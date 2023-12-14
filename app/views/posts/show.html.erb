@@ -3,10 +3,10 @@
 
 <div class='open-post-flex'>
   <div class='open-post'>
+    <h3><%= @post.title %> by <%= @post.author.name %></h3>
     <% if can? :destroy, @post %>
       <%= link_to "Delete Post", user_post_path(@post.author, @post), data: { turbo_method: :delete, turbo_confirm: "This post will be permanently removed. Do you want to proceed?" } %>
     <% end %>
-    <h3><%= @post.title %> by <%= @post.author.name %></h3>
     <p class='amount'>Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
     <p class='text'><%= @post.text %></p>
   </div>
