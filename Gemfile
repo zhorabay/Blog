@@ -59,6 +59,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 6.1'
+  gem 'rswag-specs'
 end
 
 group :development do
@@ -81,6 +82,9 @@ end
 gem 'cancancan'
 
 gem 'devise'
+
+gem 'rswag-api'
+gem 'rswag-ui'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
